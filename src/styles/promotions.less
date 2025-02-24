@@ -173,6 +173,38 @@
   }
 }
 
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: @secondary-color;
+  color: white;
+  border-radius: 8px;
+
+  &__links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    li {
+      display: inline;
+
+      a {
+        color: @primary-color;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+          color: lighten(@primary-color, 10%);
+        }
+      }
+    }
+  }
+}
+
 // Responsive Styles
 @media (max-width: 768px) {
   .navbar {
