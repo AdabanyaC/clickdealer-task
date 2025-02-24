@@ -1,0 +1,213 @@
+// Define color variables
+@primary-color: #f59649;
+@secondary-color: #373737;
+
+// Mixin for button styles
+.button-style(@bg-color, @text-color) {
+  background-color: @bg-color;
+  color: @text-color;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+// Mixin for flexbox layout
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Mixin for grid layout
+.grid-layout(@columns) {
+  display: grid;
+  grid-template-columns: repeat(@columns, 1fr);
+  gap: 25px;
+}
+
+// Mixin for border-radius
+.border-radius(@radius) {
+  border-radius: @radius;
+}
+
+// Navbar Styles
+.navbar {
+  .flex-center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 15px 20px;
+
+  &__logo-img {
+    width: 150px;
+  }
+
+  &__cta {
+    .button-style(@primary-color, white);
+  }
+}
+
+// Hero Styles
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  .flex-center;
+
+  &__content {
+    max-width: 650px;
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  &__description {
+    color: @secondary-color;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  &__cta {
+    .button-style(@primary-color, white);
+  }
+}
+
+// Promotions Styles
+.promotions {
+  padding: 40px 20px;
+
+  &__container {
+    .flex-center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__item {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    .border-radius(8px);
+    background-color: #fff;
+    .flex-center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    .border-radius(8px);
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  &__description {
+    color: @secondary-color;
+    margin: 10px 0;
+  }
+
+  &__cta {
+    .button-style(@primary-color, white);
+    margin-top: auto;
+  }
+}
+
+.toggle-btn {
+  background-color: @secondary-color;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 20px 0;
+}
+
+// Modal Styles
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  .flex-center;
+  z-index: 1000;
+
+  &__content {
+    background-color: white;
+    padding: 30px;
+    .border-radius(8px);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: @primary-color;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    color: @secondary-color;
+    margin-bottom: 20px;
+  }
+
+  &__close {
+    .button-style(@primary-color, white);
+  }
+}
+
+// Responsive Styles
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 20px;
+
+    &__logo-img {
+      width: 120px;
+    }
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__description {
+    font-size: 1rem;
+  }
+
+  .promotions__container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .promotions__item {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .promotions__container {
+    .grid-layout(3);
+  }
+
+  .promotions__item {
+    max-width: none;
+    width: 100%;
+  }
+}
